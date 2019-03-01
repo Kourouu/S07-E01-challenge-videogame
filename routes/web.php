@@ -11,6 +11,12 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/admin', [
+    'uses' => 'MainController@admin', // définit la méthode et le controller
+    'as' => 'admin' // définit le nom de cette route
+]);
+
+$router->get('/', [
+    'uses' => 'MainController@homeAction', // définit la méthode et le controller
+    'as' => 'home' // définit le nom de cette route
+]);
