@@ -11,3 +11,9 @@
     <title>Jeux vidéos</title>
   </head>
   <body>
+    <main class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Mes jeux vidéos</h1>
+            <p class="lead">Voici une petite interface toute simple (grâce à bootstrap) permettant de visualiser les jeux vidéos de ma base de données, mais aussi de les ajouter !</p>
+            <?php include __DIR__.'/../partials/nav.php'; ?>
+        </div>

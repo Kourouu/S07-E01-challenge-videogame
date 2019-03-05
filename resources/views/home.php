@@ -1,23 +1,10 @@
 <?php require ('layout/header.php'); ?>
-
-<main class="container">
-<div class="jumbotron">
-            <h1 class="display-4">Mes jeux vidéos</h1>
-            <p class="lead">Voici une petite interface toute simple (grâce à bootstrap) permettant de visualiser les jeux vidéos de ma base de données, mais aussi de les ajouter !</p>
-            <div class="row">
-                <div class="col-md-3 mt-3">
-                <a href=" <?= route('admin'); ?>"><button type="submit" class="btn btn-primary btn-block">Aller à la page admin</button></a>
-                </div>
-            </div>
-        </div>
-        <h1></h1>
         <div class="row">
-            <div class="col-12 col-md-8">
-                <a href="<?= route('home'); ?>" class="btn btn-primary">Trier par nom</a>&nbsp;
-                <a href="<?= route('home'); ?>" class="btn btn-info">Trier par éditeur</a>&nbsp;
-                <!-- TODO #2 (optionnel) n'afficher ce bouton que s'il y a un tri -->
-                <!-- --- START OF YOUR CODE --- -->
-                <a href="<?= route('home'); ?>" class="btn btn-dark">Annuler le tri</a><br>
+            <div class="col-12">
+            <a href="?order=name" class="btn btn-primary">Trier par nom</a>&nbsp;
+            <a href="?order=editor" class="btn btn-info">Trier par éditeur</a>&nbsp;
+            <!-- TODO (optionnel) n'afficher ce bouton que s'il y a un tri -->
+            <a href="<?= route('home') ?>" class="btn btn-dark">Annuler le tri</a><br>
                 <!-- --- END OF YOUR CODE --- -->
                 <br>
                 <table class="table table-striped">
@@ -31,13 +18,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- TODO #1 boucler sur le tableau $videogameList contenant tous les jeux vidéos
-                    (et donc supprimer ces 2 lignes d'exemple) -->
-                    <!-- --- START OF YOUR CODE --- -->
-                    <!-- --- END OF YOUR CODE --- -->
-                </tbody>
+                <?php foreach ($videogameList as $currentVideogame) : ?>
+                <tr>
+                    <td><?= $currentVideogame->id ?></td>
+                    <td><?= $currentVideogame->name ?></td>
+                    <td><?= $currentVideogame->editor ?></td>
+                    <td><?= $currentVideogame->release_date ?></td>
+                    <td><?= $platformList[$currentVideogame->platform_id] ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
                 </table>
-    </div>
-    </div>
-</main> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mt-3">
+                <a href=" <?= route('admin'); ?>"><button type="submit" class="btn btn-primary btn-block">Aller à la page admin</button></a>
+            </div>
+        </div>
+    </main> 
 <?php require ('layout/footer.php'); ?>

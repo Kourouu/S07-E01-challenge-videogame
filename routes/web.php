@@ -12,11 +12,17 @@
 */
 
 $router->get('/admin', [
-    'uses' => 'MainController@admin', // définit la méthode et le controller
+    'uses' => 'MainController@adminAction', // définit la méthode et le controller
     'as' => 'admin' // définit le nom de cette route
 ]);
 
-$router->get('/', [
-    'uses' => 'MainController@homeAction', // définit la méthode et le controller
-    'as' => 'home' // définit le nom de cette route
+$router->post('/admin',[
+    'uses' => 'MainController@adminPostAction',
+    'as' => 'admin_post'
 ]);
+
+$router->get('/', [
+    'uses' => 'MainController@homeAction',
+    'as' => 'home'
+]);
+
